@@ -1,71 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Productos</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#176c66"><meta name="description" content="Ribera. Un espacio sencillo para guardar, consultar y actualizar tu inventario.">
+  <title>Productos · Ribera</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css?v=lago1">
+  <script defer src="app-core.js?v=lago1"></script><script defer src="export-excel.js?v=lago1"></script><script defer src="app.js?v=lago1"></script>
 </head>
+<body data-page="products">
+<svg xmlns="http://www.w3.org/2000/svg" class="svg-sprite" aria-hidden="true"><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol><symbol id="i-box" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="M3 8v9l9 5 9-5V8M12 13v9M7.5 5.5l9 5"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol><symbol id="i-edit" viewBox="0 0 24 24"><path d="m15 5 4 4M4 20l5-1L21 7a2.8 2.8 0 0 0-4-4L5 15l-1 5Z"/></symbol><symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7M14 10v7"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="m12 3 10 18H2L12 3Z"/><path d="M12 9v4m0 4h.01"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 6-10 6L2 9l10-6Zm-9 11 9 5 9-5M3 18l9 5 9-5"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol><symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C8 2 1 11 6 17s15 1 14-13Z"/><path d="M4 21 15 10"/></symbol></svg>
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<aside class="sidebar">
+  <a class="brand" href="index.html" aria-label="Ribera, inicio"><span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M8 14c6-7 11 7 17 0s10 0 10 0M5 22c6-7 11 7 17 0s10 0 10 0M8 30c6-7 11 7 17 0s10 0 10 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span><span class="brand-name">ribera<span>inventario de productos</span></span></a>
+  <p class="nav-caption">ESPACIO DE TRABAJO</p><nav aria-label="Navegación principal"><a class="nav-link" href="index.html"><svg class="icon" aria-hidden="true"><use href="#i-grid"></use></svg><span>Inicio</span></a><a class="nav-link active" href="productos.html" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg><span>Productos</span><span class="nav-count" id="nav-count">—</span></a><a class="nav-link" href="agregar.html"><svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg><span>Registrar</span></a></nav>
+  <div class="sidebar-bottom"><div class="local-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg><strong>Tu inventario, contigo.</strong><p>Los registros se conservan en este navegador.</p></div><div class="workspace-name"><span>R</span><div><strong>Mi espacio</strong><small>Inventario personal</small></div></div></div>
+</aside>
+<div class="app-shell">
+  <header class="topbar"><p>Mi espacio <span>/</span><strong>Productos</strong></p><div class="topbar-meta"><span class="save-indicator"><span class="status-dot" aria-hidden="true"></span><span id="save-status">Guardado en este navegador</span></span><time id="current-date"></time></div></header>
+  <main id="main" tabindex="-1">
+    <div class="page-heading"><div><p class="eyebrow" id="page-eyebrow">INVENTARIO AL DÍA</p><h1 id="page-title">Inventario de productos</h1><p class="page-subtitle" id="page-subtitle">Busca un artículo, revisa su cantidad o actualiza sus datos.</p></div><div class="page-actions"><button class="button secondary" type="button" data-export title="Descarga todo el inventario en Excel"><svg class="icon" aria-hidden="true"><use href="#i-download"></use></svg>Exportar Excel</button><a class="button primary" href="agregar.html"><svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>Agregar producto</a></div></div>
+    <noscript><p class="storage-error">Activa JavaScript para administrar el inventario.</p></noscript>
+    <section class="storage-error" id="storage-error" role="alert" hidden><div><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><p id="storage-error-text"></p></div><div class="error-actions"><button class="button secondary" type="button" id="retry-storage">Reintentar</button><button class="button secondary" type="button" id="download-raw" hidden>Descargar copia</button><button class="button secondary" type="button" id="open-reset" hidden>Restablecer ejemplos</button></div></section>
 
-<body>
-
-    <header>
-        <h1>Inventario de Productos</h1>
-    </header>
-
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="productos.html">Productos</a>
-        <a href="agregar.html">Agregar Producto</a>
-    </nav>
-
-    <main>
-
-        <table>
-
-            <tr>
-                <th>ID</th>
-                <th>Producto</th>
-                <th>Categoría</th>
-                <th>Existencia</th>
-            </tr>
-
-            <tr>
-                <td>1</td>
-                <td>Lápiz</td>
-                <td>Papelería</td>
-                <td>120</td>
-            </tr>
-
-            <tr>
-                <td>2</td>
-                <td>Cuaderno</td>
-                <td>Papelería</td>
-                <td>50</td>
-            </tr>
-
-            <tr>
-                <td>3</td>
-                <td>Borrador</td>
-                <td>Papelería</td>
-                <td>35</td>
-            </tr>
-
-            <tr>
-                <td>4</td>
-                <td>Regla</td>
-                <td>Papelería</td>
-                <td>40</td>
-            </tr>
-
-        </table>
-
-    </main>
-
-    <footer>
-        Sistema de Inventario
-    </footer>
+<section class="panel products-panel" aria-label="Catálogo de productos">
+  <div class="catalog-title"><div><h2>Catálogo <span class="count-pill" id="total-count">—</span></h2><p class="muted">Cada artículo con sus datos y existencias.</p></div><span class="units-total" id="units-summary">—</span></div>
+  <div class="filters">
+    <div class="search-field"><label for="search">Buscar productos</label><div class="input-with-icon"><svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg><input type="search" id="search" placeholder="Nombre, categoría o ID" title="También puedes buscar por descripción" autocomplete="off"></div></div>
+    <div class="select-field"><label for="category-filter">Categoría</label><select id="category-filter"><option value="">Todas</option></select></div>
+    <div class="select-field"><label for="stock-filter">Existencias</label><select id="stock-filter"><option value="">Todas</option><option value="low">Pocas existencias</option><option value="out">Agotados</option></select></div>
+  </div>
+  <div class="table-toolbar"><p id="result-count" aria-live="polite">—</p><div><label for="sort">Ordenar por</label><select id="sort"><option value="name">Nombre: A a Z</option><option value="recent">Más recientes</option><option value="quantity">Menos existencias</option></select></div></div>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla de productos">
+  <table class="inventory-table " role="table">
+    <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Producto</th><th scope="col" role="columnheader">Categoría</th><th scope="col" role="columnheader">Existencias</th><th scope="col" role="columnheader">Estado</th><th scope="col" role="columnheader">Acciones</th></tr></thead>
+    <tbody id="inventory-body" role="rowgroup"></tbody>
+  </table>
+</div><div class="empty-state" id="empty-state" hidden>
+  <span class="empty-icon"><svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg></span><h3 id="empty-title">Aún no hay productos</h3>
+  <p id="empty-copy">Agrega un artículo para comenzar tu inventario.</p>
+  <a class="button primary" href="agregar.html" id="empty-add"><svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>Agregar producto</a>
+  <button class="button secondary" id="clear-filters" type="button" hidden>Limpiar filtros</button>
+</div>
+  <div class="panel-footer"><span>Editar actualiza el mismo registro.</span><span>Al eliminar puedes deshacer el último cambio.</span></div>
+</section>
+    <footer class="app-footer"><span><strong>ribera</strong> / Control de inventario</span><p>Guardado en este navegador. Exporta Excel para conservar una copia.</p></footer>
+  </main>
+</div>
+<dialog id="delete-dialog" aria-labelledby="delete-title"><div class="dialog-content"><span class="dialog-icon danger"><svg class="icon" aria-hidden="true"><use href="#i-trash"></use></svg></span><h2 id="delete-title">Eliminar producto</h2><p id="delete-copy"></p><p class="muted small-copy">Puedes deshacer la última eliminación desde el mensaje de confirmación.</p><div id="delete-error" class="form-error" role="alert" hidden></div><div class="dialog-actions"><button class="button secondary" id="cancel-delete" type="button" autofocus>Cancelar</button><button class="button danger-button" id="confirm-delete" type="button">Eliminar producto</button></div></div></dialog>
+ <dialog id="reset-dialog" aria-labelledby="reset-title"><div class="dialog-content"><span class="dialog-icon danger"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg></span><h2 id="reset-title">Restablecer ejemplos</h2><p>Se sustituirán los datos de este inventario en este navegador por los cuatro productos de ejemplo. Descarga una copia antes de continuar.</p><div id="reset-error" class="form-error" role="alert" hidden></div><div class="dialog-actions"><button class="button secondary" id="cancel-reset" type="button" autofocus>Cancelar</button><button class="button danger-button" id="confirm-reset" type="button">Restablecer ejemplos</button></div></div></dialog>
+ <div class="toast" id="toast" role="status" aria-live="polite" hidden><span class="toast-icon"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span><p id="toast-message"></p><button id="undo-delete" type="button" hidden>Deshacer</button><button id="close-toast" class="icon-button" type="button" aria-label="Cerrar mensaje"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button></div>
 
 </body>
-
 </html>
